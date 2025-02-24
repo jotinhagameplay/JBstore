@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JB Usados</title>
+    <script>
+        function getCookie(nome) {
+            let cookies = document.cookie.split('; ');
+            for (let i = 0; i < cookies.length; i++) {
+                let [chave, valor] = cookies[i].split('=');
+                if (chave === nome) {
+                    return valor;
+                }
+            }
+            return null;
+        }
+
+        function carregarConfiguracoes() {
+            const corPrimaria = getCookie('corPrimaria') || '#10B981';
+            const corSecundaria = getCookie('corSecundaria') || '#047857';
+            const tamanhoFonte = getCookie('tamanhoFonte') || '16';
+
+            document.documentElement.style.setProperty('--cor-primaria', corPrimaria);
+            document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
+            document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonte + 'px');
+
+            document.body.style.backgroundColor = corSecundaria;  // Cor de fundo da página
+            document.querySelector('.navbar').style.backgroundColor = corPrimaria; // Navbar com cor primária
+        }
+
+        window.onload = carregarConfiguracoes;
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --cor-primaria: #10B981;
+            --cor-secundaria: #047857;
+            --tamanho-fonte: 16px;
+        }
+
+        body {
+            font-size: var(--tamanho-fonte);
+        }
+
+        .navbar {
+            background-color: var(--cor-primaria);
+        }
+
+        .preview {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-primaria);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="navbar p-4 text-white text-center text-xl font-bold">
+        Brechó Online
+    </header>
+    <nav class="p-3 text-white">
+        <ul class="flex justify-center space-x-6">
+            <li><a href="index.html" class="hover:underline">Home</a></li>
+            <li><a href="produtos.html" class="hover:underline">Produtos</a></li>
+            <li><a href="wa.me/+5563984156934" class="hover:underline">Contato</a></li>
+            <li><a href="configuracoes.html" class="hover:underline">Configurações</a></li>
+        </ul>
+    </nav>
+    <main class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Exemplo de Produto -->
+            <div class="bg-white p-4 shadow-lg rounded-lg">
+                <img src="img/pop 500cilin.png" alt="Produto" class="w-full h-48 object-cover rounded">
+                <h2 class="text-lg font-semibold mt-2">POP 500Cilindradas</h2>
+                <p class="text-gray-600">Uma moto diferenciada pra você que curte a velocidade. </p>
+                <p class="text-green-600 font-bold mt-2">R$ 5000,00</p>
+                <button class="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Comprar</button>
+            </div>
+
+
+            <!-- Fim Exemplo de Produto -->
+        </div>
+
+        
+    </main>
+</body>
+</html>
