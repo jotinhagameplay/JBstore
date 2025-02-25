@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações - JB Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function setCookie(nome, valor, dias) {
             let data = new Date();
@@ -38,208 +39,48 @@
             const corPrimaria = getCookie('corPrimaria') || '#10B981';
             const corSecundaria = getCookie('corSecundaria') || '#047857';
             const tamanhoFonte = getCookie('tamanhoFonte') || '16';
-
+            
             document.documentElement.style.setProperty('--cor-primaria', corPrimaria);
             document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
             document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonte + 'px');
         }
 
-        function mostrarMensagemCookies() {
-            const mensagem = document.getElementById('cookie-consent');
-            if (!getCookie('cookieConsent')) {
-                mensagem.style.display = 'block';
-            }
-        }
-
-        function aceitarCookies() {
-            setCookie('cookieConsent', 'true', 30);
-            document.getElementById('cookie-consent').style.display = 'none';
-        }
-
-        window.onload = () => {
-            carregarConfiguracoes();
-            mostrarMensagemCookies();
-        };
+        window.onload = carregarConfiguracoes;
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
             --cor-primaria: #10B981;
             --cor-secundaria: #047857;
             --tamanho-fonte: 16px;
         }
-
-        body {
-            font-size: var(--tamanho-fonte);
-        }
-
-        .preview {
-            background-color: var(--cor-secundaria);
-            color: var(--cor-primaria);
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .button {
-            color: white;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .button-left, .button-right {
-            height: 100%;
-            width: 50%;
-        }
-
-        .button-left {
-            background-color: var(--cor-primaria);
-        }
-
-        .button-right {
-            background-color: var(--cor-secundaria);
-        }
-
-        .button:hover {
-            cursor: pointer;
-            opacity: 0.9;
-        }
-
-        .button-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .back-button {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            padding: 12px 20px;
-            background-color: var(--cor-primaria);
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .back-button:hover {
-            background-color: var(--cor-secundaria);
-        }
-
-        #cookie-consent {
-            background-color: #f4f4f4;
-            padding: 15px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: none;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #cookie-consent button {
-            background-color: #10B981;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #cookie-consent button:hover {
-            background-color: #047857;
-        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <!-- Barra de Navegação -->
-    <header class="bg-teal-500 p-4 text-white text-center text-xl font-bold">
-        Brechó Online
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <header class="bg-[var(--cor-primaria)] p-4 text-white text-center text-2xl font-bold shadow-md">
+        Configurações
     </header>
-    <nav class="bg-teal-600 p-3 text-white">
-        <ul class="flex justify-center space-x-6">
-            <li><a href="index.html" class="hover:underline">Home</a></li>
-            <li><a href="produtos.html" class="hover:underline">Produtos</a></li>
-            <li><a href="https://api.whatsapp.com/send/?phone=%2B5563984156934&text&type=phone_number&app_absent=0" class="hover:underline">Contato</a></li>
-            <li><a href="configuracoes.html" class="hover:underline">Configurações</a></li>
-        </ul>
-    </nav>
+    <main class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
+        <h2 class="text-xl font-semibold mb-4">Escolha uma Paleta de Cores</h2>
+        <div class="grid grid-cols-3 md:grid-cols-4 gap-4 mb-6">
+            <button onclick="alterarPaleta('#10B981', '#047857')" class="h-16 rounded-lg shadow-lg bg-gradient-to-r from-green-500 to-green-700"></button>
+            <button onclick="alterarPaleta('#DC2626', '#991B1B')" class="h-16 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-700"></button>
+            <button onclick="alterarPaleta('#2563EB', '#1E3A8A')" class="h-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-blue-700"></button>
+            <button onclick="alterarPaleta('#F59E0B', '#B45309')" class="h-16 rounded-lg shadow-lg bg-gradient-to-r from-yellow-500 to-yellow-700"></button>
+            <button onclick="alterarPaleta('#9333EA', '#6B21A8')" class="h-16 rounded-lg shadow-lg bg-gradient-to-r from-purple-500 to-purple-700"></button>
+            <button onclick="alterarPaleta('#000000', '#333333')" class="h-16 rounded-lg shadow-lg bg-gradient-to-r from-black to-gray-800"></button>
+        </div>
 
-    <h1 class="text-2xl mb-4">Configurações de Estilo</h1>
-    
-    <h2 class="text-xl mt-4">Escolha uma Paleta de Cores</h2>
-    <div class="button-container">
-        <!-- 12 Paletas de Cores -->
-        <button onclick="alterarPaleta('#10B981', '#047857')" class="button">
-            <div class="button-left" style="background-color: #10B981;"></div>
-            <div class="button-right" style="background-color: #047857;"></div>
-        </button>
-        <button onclick="alterarPaleta('#DC2626', '#991B1B')" class="button">
-            <div class="button-left" style="background-color: #DC2626;"></div>
-            <div class="button-right" style="background-color: #991B1B;"></div>
-        </button>
-        <button onclick="alterarPaleta('#2563EB', '#1E3A8A')" class="button">
-            <div class="button-left" style="background-color: #2563EB;"></div>
-            <div class="button-right" style="background-color: #1E3A8A;"></div>
-        </button>
-        <button onclick="alterarPaleta('#F59E0B', '#B45309')" class="button">
-            <div class="button-left" style="background-color: #F59E0B;"></div>
-            <div class="button-right" style="background-color: #B45309;"></div>
-        </button>
-        <button onclick="alterarPaleta('#9333EA', '#6B21A8')" class="button">
-            <div class="button-left" style="background-color: #9333EA;"></div>
-            <div class="button-right" style="background-color: #6B21A8;"></div>
-        </button>
-        <button onclick="alterarPaleta('#000000', '#333333')" class="button">
-            <div class="button-left" style="background-color: #000000;"></div>
-            <div class="button-right" style="background-color: #333333;"></div>
-        </button>
+        <h2 class="text-xl font-semibold mb-4">Ajuste o Tamanho da Fonte</h2>
+        <input type="range" min="12" max="24" value="16" class="w-full mb-6" oninput="alterarFonte(this.value)">
 
-        <button onclick="alterarPaleta('#EF4444', '#9B2C2C')" class="button">
-            <div class="button-left" style="background-color: #EF4444;"></div>
-            <div class="button-right" style="background-color: #9B2C2C;"></div>
-        </button>
-        <button onclick="alterarPaleta('#6EE7B7', '#14B8A6')" class="button">
-            <div class="button-left" style="background-color: #6EE7B7;"></div>
-            <div class="button-right" style="background-color: #14B8A6;"></div>
-        </button>
-        <button onclick="alterarPaleta('#F472B6', '#9D174D')" class="button">
-            <div class="button-left" style="background-color: #F472B6;"></div>
-            <div class="button-right" style="background-color: #9D174D;"></div>
-        </button>
-        <button onclick="alterarPaleta('#3B82F6', '#1D4ED8')" class="button">
-            <div class="button-left" style="background-color: #3B82F6;"></div>
-            <div class="button-right" style="background-color: #1D4ED8;"></div>
-        </button>
-        <button onclick="alterarPaleta('#4B5563', '#1F2937')" class="button">
-            <div class="button-left" style="background-color: #4B5563;"></div>
-            <div class="button-right" style="background-color: #1F2937;"></div>
-        </button>
-        <button onclick="alterarPaleta('#D97706', '#B45309')" class="button">
-            <div class="button-left" style="background-color: #D97706;"></div>
-            <div class="button-right" style="background-color: #B45309;"></div>
-        </button>
-    </div>
-    
-    <h2 class="text-xl mt-4">Ajuste o Tamanho da Fonte</h2>
-    <input type="range" min="12" max="24" value="16" class="mt-2" oninput="alterarFonte(this.value)">
-    
-    <div class="preview mt-6">Pré-visualização das mudanças</div>
-    
-    <a href="index.html" class="back-button">Voltar à Página de Vendas</a>
+        <div class="text-center bg-[var(--cor-secundaria)] text-white p-4 rounded-lg shadow-md text-lg">
+            Pré-visualização das mudanças
+        </div>
 
-    <!-- Mensagem de Consentimento de Cookies -->
-    <div id="cookie-consent">
-        <p>Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você aceita a nossa <a href="#" class="text-blue-500">política de privacidade</a>.</p>
-        <button onclick="aceitarCookies()">Aceitar</button>
-    </div>
+        <a href="index.html" class="block text-center mt-6 px-6 py-3 bg-[var(--cor-primaria)] text-white rounded-lg shadow-md 
+                        hover:bg-green-600 transition-all duration-300 transform hover:scale-105">
+            Voltar à Página de Vendas
+        </a>
+    </main>
 </body>
 </html>
