@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JB Usados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function getCookie(nome) {
             let cookies = document.cookie.split('; ');
@@ -24,66 +25,103 @@
             document.documentElement.style.setProperty('--cor-primaria', corPrimaria);
             document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
             document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonte + 'px');
-
-            document.body.style.backgroundColor = corSecundaria;  // Cor de fundo da página
-            document.querySelector('.navbar').style.backgroundColor = corPrimaria; // Navbar com cor primária
         }
 
         window.onload = carregarConfiguracoes;
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
             --cor-primaria: #10B981;
             --cor-secundaria: #047857;
             --tamanho-fonte: 16px;
         }
-
-        body {
-            font-size: var(--tamanho-fonte);
-        }
-
-        .navbar {
-            background-color: var(--cor-primaria);
-        }
-
-        .preview {
-            background-color: var(--cor-secundaria);
-            color: var(--cor-primaria);
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
-    <header class="navbar p-4 text-white text-center text-xl font-bold">
-        Brechó Online
+    <!-- Navbar -->
+    <header class="bg-[var(--cor-primaria)] shadow-lg p-5 text-white text-center text-2xl font-extrabold">
+        JB USADOS
     </header>
-    <nav class="p-3 text-white">
-        <ul class="flex justify-center space-x-6">
-            <li><a href="index.html" class="hover:underline">Home</a></li>
-            <li><a href="produtos.html" class="hover:underline">Produtos</a></li>
-            <li><a href="https://api.whatsapp.com/send/?phone=%2B5563984156934&text&type=phone_number&app_absent=0" class="hover:underline">Contato</a></li>
-            <li><a href="configuracoes.html" class="hover:underline">Configurações</a></li>
+
+    <!-- Navegação -->
+    <nav class="p-4 bg-gray-200">
+        <ul class="flex justify-center space-x-8 text-lg font-semibold text-gray-800">
+            <li><a href="index.html" class="hover:text-[var(--cor-primaria)] transition-colors">Home</a></li>
+            <li><a href="produtos.html" class="hover:text-[var(--cor-primaria)] transition-colors">Produtos</a></li>
+            <li><a href="wa.me/+5563984156934" class="hover:text-[var(--cor-primaria)] transition-colors">Contato</a></li>
+            <li><a href="configuracoes.html" class="hover:text-[var(--cor-primaria)] transition-colors">Configurações</a></li>
         </ul>
     </nav>
+
+    <!-- Conteúdo principal -->
     <main class="p-6">
+        <h1 class="text-3xl font-bold text-center text-[var(--cor-primaria)] mb-6">Anúncios Disponíveis</h1>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Exemplo de Produto -->
-            <div class="bg-white p-4 shadow-lg rounded-lg">
-                <img src="img/pop 500cilin.png" alt="Produto" class="w-full h-48 object-cover rounded">
-                <h2 class="text-lg font-semibold mt-2">POP 500Cilindradas</h2>
-                <p class="text-gray-600">Uma moto diferenciada pra você que curte a velocidade. </p>
-                <p class="text-green-600 font-bold mt-2">R$ 5000,00</p>
-                <button class="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Comprar</button>
+            <!-- Produto 1 -->
+            <div class="bg-white p-5 shadow-lg rounded-lg">
+                <img src="img/pop 500cilin.png" alt="POP 500Cilindradas" class="w-full h-48 object-cover rounded">
+                <h2 class="text-xl font-semibold mt-3">POP 500Cilindradas</h2>
+                <p class="text-gray-600">Uma moto diferenciada para quem curte velocidade.</p>
+                <p class="text-green-600 font-bold mt-2">R$ 5.000,00</p>
+                <button class="mt-4 w-full bg-[var(--cor-primaria)] text-white py-2 rounded-lg hover:bg-green-700 transition-all">
+                    Comprar
+                </button>
             </div>
 
+            <!-- Produto 2 -->
+            <div class="bg-white p-5 shadow-lg rounded-lg">
+                <img src="img/carro-usado.jpg" alt="Carro Usado" class="w-full h-48 object-cover rounded">
+                <h2 class="text-xl font-semibold mt-3">Carro Sedan 2015</h2>
+                <p class="text-gray-600">Ótimo carro para o dia a dia, econômico e confortável.</p>
+                <p class="text-green-600 font-bold mt-2">R$ 28.000,00</p>
+                <button class="mt-4 w-full bg-[var(--cor-primaria)] text-white py-2 rounded-lg hover:bg-green-700 transition-all">
+                    Comprar
+                </button>
+            </div>
 
-            <!-- Fim Exemplo de Produto -->
+            <!-- Produto 3 -->
+            <div class="bg-white p-5 shadow-lg rounded-lg">
+                <img src="img/bicicleta.webp" alt="Bicicleta" class="w-full h-48 object-cover rounded">
+                <h2 class="text-xl font-semibold mt-3">Bicicleta MTB</h2>
+                <p class="text-gray-600">Bicicleta perfeita para trilhas e passeios urbanos.</p>
+                <p class="text-green-600 font-bold mt-2">R$ 1.200,00</p>
+                <button class="mt-4 w-full bg-[var(--cor-primaria)] text-white py-2 rounded-lg hover:bg-green-700 transition-all">
+                    Comprar
+                </button>
+            </div>
         </div>
 
-        
+        <!-- Espaço para anúncios -->
+        <h2 class="text-2xl font-bold text-center text-[var(--cor-primaria)] mt-10">Outros Anúncios</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+            <div class="bg-white p-4 shadow-lg rounded-lg flex items-center">
+                <img src="img/smartphone.jpg" alt="Smartphone" class="w-20 h-20 object-cover rounded">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Smartphone Xiaomi</h3>
+                    <p class="text-gray-600 text-sm">Modelo Redmi Note 10, semi-novo.</p>
+                    <p class="text-green-600 font-bold mt-1">R$ 1.500,00</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 shadow-lg rounded-lg flex items-center">
+                <img src="img/notbook.webp" alt="Notebook" class="w-20 h-20 object-cover rounded">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Notebook Dell i5</h3>
+                    <p class="text-gray-600 text-sm">Ideal para estudos e trabalho.</p>
+                    <p class="text-green-600 font-bold mt-1">R$ 2.800,00</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 shadow-lg rounded-lg flex items-center">
+                <img src="img/geladeira.webp" alt="Geladeira" class="w-20 h-20 object-cover rounded">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Geladeira Electrolux</h3>
+                    <p class="text-gray-600 text-sm">Capacidade de 400L, frost free.</p>
+                    <p class="text-green-600 font-bold mt-1">R$ 3.200,00</p>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>
