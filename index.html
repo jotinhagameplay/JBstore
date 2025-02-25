@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brechó Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function getCookie(nome) {
             let cookies = document.cookie.split('; ');
@@ -20,77 +21,26 @@
             const corPrimaria = getCookie('corPrimaria') || '#10B981';
             const corSecundaria = getCookie('corSecundaria') || '#047857';
             const tamanhoFonte = getCookie('tamanhoFonte') || '16';
-
             document.documentElement.style.setProperty('--cor-primaria', corPrimaria);
             document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
             document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonte + 'px');
         }
-
+        
         window.onload = carregarConfiguracoes;
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
             --cor-primaria: #10B981;
             --cor-secundaria: #047857;
             --tamanho-fonte: 16px;
         }
-
-        body {
-            font-size: var(--tamanho-fonte);
-            background-color: var(--cor-secundaria);
-            color: #fff;
-        }
-
-        .navbar {
-            background-color: var(--cor-primaria);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .welcome {
-            font-size: 4em;
-            font-weight: bold;
-            color: var(--cor-primaria);
-            text-align: center;
-            margin: 20% 0;
-        }
-
-        @media (max-width: 768px) {
-            .welcome {
-                font-size: 2.5em;
-            }
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 80vh;
-        }
-
-        .button {
-            background-color: var(--cor-primaria);
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: var(--cor-primaria);
-            opacity: 0.9;
-        }
     </style>
 </head>
-<body>
-    <header class="navbar p-4 text-white text-center text-xl font-bold">
+<body class="bg-[var(--cor-secundaria)] text-white font-sans">
+    <header class="navbar bg-[var(--cor-primaria)] shadow-lg p-4 text-white text-center text-2xl font-extrabold">
         Brechó Online
     </header>
+    
     <nav class="p-3 text-white">
         <ul class="flex justify-center space-x-6">
             <li><a href="index.html" class="hover:underline">Home</a></li>
@@ -99,9 +49,18 @@
             <li><a href="configuracoes.html" class="hover:underline">Configurações</a></li>
         </ul>
     </nav>
-    <main class="container">
-        <h1 class="welcome">Bem-vindo</h1>
-        <button class="button">Explorar Produtos</button>
+
+    <main class="flex flex-col items-center justify-center h-screen text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-[var(--cor-primaria)] drop-shadow-lg">
+            Bem-vindo
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-gray-200">
+            Descubra peças únicas com estilo e sustentabilidade.
+        </p>
+        <button class="mt-6 px-6 py-3 text-lg bg-[var(--cor-primaria)] text-white rounded-lg shadow-md 
+                        hover:bg-green-600 transition-all duration-300 transform hover:scale-105">
+            Explorar Produtos
+        </button>
     </main>
 </body>
 </html>
