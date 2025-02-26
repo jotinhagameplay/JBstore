@@ -7,26 +7,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function getCookie(nome) {
-            let cookies = document.cookie.split('; ');
-            for (let i = 0; i < cookies.length; i++) {
-                let [chave, valor] = cookies[i].split('=');
-                if (chave === nome) {
-                    return valor;
-                }
+        let cookies = document.cookie.split('; ');
+        for (let i = 0; i < cookies.length; i++) {
+            let [chave, valor] = cookies[i].split('=');
+            if (chave === nome) {
+                return valor;
             }
-            return null;
         }
+        return null;
+    }
 
-        function carregarConfiguracoes() {
-            const corPrimaria = getCookie('corPrimaria') || '#10B981';
-            const corSecundaria = getCookie('corSecundaria') || '#047857';
-            const tamanhoFonte = getCookie('tamanhoFonte') || '16';
-            document.documentElement.style.setProperty('--cor-primaria', corPrimaria);
-            document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
-            document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonte + 'px');
-        }
-        
-        window.onload = carregarConfiguracoes;
+    function carregarConfiguracoes() {
+        const corPrimaria = getCookie('corPrimaria') || '#10B981';
+        const corSecundaria = getCookie('corSecundaria') || '#047857';
+        const tamanhoFonte = getCookie('tamanhoFonte') || '16';
+
+        document.documentElement.style.setProperty('--cor-primaria', corPrimaria);
+        document.documentElement.style.setProperty('--cor-secundaria', corSecundaria);
+        document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonte + 'px');
+        document.body.style.fontSize = tamanhoFonte + 'px';
+    }
+
+    window.onload = carregarConfiguracoes;
     </script>
     <style>
         :root {
